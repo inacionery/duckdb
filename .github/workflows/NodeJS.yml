@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!feature'
       - '!feature'
     tags:
       - '**'
@@ -35,7 +35,7 @@ on:
       - '.github/config/uncovered_files.csv'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/feature' || github.sha }}
   cancel-in-progress: true
 
 env:
@@ -73,7 +73,7 @@ jobs:
         node: [ '10', '12', '14', '15', '16', '17', '18', '19', '20' ]
         target_arch: [ x64, arm64 ]
         isRelease:
-          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master' }}
+          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/feature' }}
         exclude:
           - isRelease: false
             node: 10
@@ -153,7 +153,7 @@ jobs:
         uses: hendrikmuhs/ccache-action@main
         with:
           key: ${{ github.job }}
-          save: ${{ ( github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' ) && ( matrix.node == '19' ) }}
+          save: ${{ ( github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' ) && ( matrix.node == '19' ) }}
 
       - name: Build DuckDB
         shell: bash
@@ -177,7 +177,7 @@ jobs:
         run: ./scripts/node_build.sh ${{ matrix.node }}
 
   osx-nodejs:
-    if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master'
+    if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/feature'
     name: node.js OSX
     runs-on: macos-latest
     needs: linux-nodejs
@@ -186,7 +186,7 @@ jobs:
         target_arch: [ x64, arm64 ]
         node: [ '10', '12', '14', '15', '16', '17', '18', '19', '20' ]
         isRelease:
-          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master' }}
+          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/feature' }}
         exclude:
           - isRelease: false
             node: 10
@@ -224,7 +224,7 @@ jobs:
         uses: hendrikmuhs/ccache-action@main
         with:
           key: ${{ github.job }}-${{ matrix.target_arch }}
-          save: ${{ ( github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' ) && ( matrix.node == '19' ) }}
+          save: ${{ ( github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' ) && ( matrix.node == '19' ) }}
 
       - name: Build DuckDB
         shell: bash
@@ -263,7 +263,7 @@ jobs:
       matrix:
         node: [ '10', '12', '14', '15', '16', '17', '18', '19', '20' ]
         isRelease:
-          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master' }}
+          - ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/feature' }}
         exclude:
           - isRelease: false
             node: 10
@@ -318,7 +318,7 @@ jobs:
         uses: hendrikmuhs/ccache-action@main
         with:
           key: ${{ github.job }}-${{ matrix.node }}
-          save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+          save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
           variant: sccache
 
       - name: Node

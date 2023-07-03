@@ -2716,7 +2716,7 @@ public class TestDuckDBJDBC {
 	}
 
 	/**
-	 * @see {https://github.com/duckdb/duckdb/issues/3906}
+	 * @see {https://github.com/inacionery/duckdb/issues/3906}
 	 */
 	public static void test_cached_row_set() throws Exception {
 		CachedRowSet rowSet = RowSetProvider.newFactory().createCachedRowSet();
@@ -3401,7 +3401,7 @@ public class TestDuckDBJDBC {
 		}
 	}
 
-	// https://github.com/duckdb/duckdb/issues/7218
+	// https://github.com/inacionery/duckdb/issues/7218
 	public static void test_unknown_result_type() throws Exception {
 		try (Connection connection = DriverManager.getConnection("jdbc:duckdb:");
 			 PreparedStatement p = connection.prepareStatement("select generate_series.generate_series from generate_series(?, ?) order by 1")) {

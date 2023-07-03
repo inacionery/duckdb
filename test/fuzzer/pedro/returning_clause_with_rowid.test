@@ -50,7 +50,7 @@ Binder Error: Aggregate functions are not supported here
 statement ok
 select struct_pack(row_id := 42);
 
-# Additional test case from bug nr 5 of https://github.com/duckdb/duckdb/issues/5984
+# Additional test case from bug nr 5 of https://github.com/inacionery/duckdb/issues/5984
 statement ok
 CREATE TABLE t1 (c1 AS ('abc'), c2 INT);
 

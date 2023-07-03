@@ -107,4 +107,4 @@ CREATE TABLE hits
     CLID INTEGER NOT NULL,
     PRIMARY KEY (CounterID, EventDate, UserID, EventTime, WatchID)
 );
-INSERT INTO hits SELECT * FROM read_parquet('https://github.com/duckdb/duckdb-data/releases/download/v1.0/hits.parquet');
+INSERT INTO hits SELECT * FROM read_parquet('https://github.com/inacionery/duckdb-data/releases/download/v1.0/hits.parquet');

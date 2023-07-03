@@ -97,4 +97,4 @@ rm -rf ~/.julia/compiled
 ### Submitting a New Package
 The DuckDB Julia package depends on the [DuckDB_jll package](https://github.com/JuliaBinaryWrappers/DuckDB_jll.jl), which can be updated by sending a PR to [Yggdrassil](https://github.com/JuliaPackaging/Yggdrasil/pull/5049).
 
-After the `DuckDB_jll` package is updated, the DuckDB package can be updated by incrementing the version number (and dependency version numbers) in `Project.toml`, followed by [adding a comment containing the text `@JuliaRegistrator register subdir=tools/juliapkg`](https://github.com/duckdb/duckdb/commit/88b59799f41fce7cbe166e5c33d0d5f6d480278d#commitcomment-76533721) to the commit. 
+After the `DuckDB_jll` package is updated, the DuckDB package can be updated by incrementing the version number (and dependency version numbers) in `Project.toml`, followed by [adding a comment containing the text `@JuliaRegistrator register subdir=tools/juliapkg`](https://github.com/inacionery/duckdb/commit/88b59799f41fce7cbe166e5c33d0d5f6d480278d#commitcomment-76533721) to the commit. 

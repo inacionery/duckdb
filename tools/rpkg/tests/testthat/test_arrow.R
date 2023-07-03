@@ -48,7 +48,7 @@ test_that("to_duckdb", {
     ds %>%
       to_duckdb(con = con) %>%
       collect() %>%
-      # factors don't roundtrip https://github.com/duckdb/duckdb/issues/1879
+      # factors don't roundtrip https://github.com/inacionery/duckdb/issues/1879
       select(!fct) %>%
       arrange(int),
     example_data %>%
@@ -89,7 +89,7 @@ test_that("to_duckdb then to_arrow", {
 
   ds_rt <- ds %>%
     to_duckdb() %>%
-    # factors don't roundtrip https://github.com/duckdb/duckdb/issues/1879
+    # factors don't roundtrip https://github.com/inacionery/duckdb/issues/1879
     select(-fct) %>%
     to_arrow()
 
@@ -103,7 +103,7 @@ test_that("to_duckdb then to_arrow", {
   # And we can continue the pipeline
   ds_rt <- ds %>%
     to_duckdb() %>%
-    # factors don't roundtrip https://github.com/duckdb/duckdb/issues/1879
+    # factors don't roundtrip https://github.com/inacionery/duckdb/issues/1879
     select(-fct) %>%
     to_arrow() %>%
     filter(int > 5)
@@ -122,7 +122,7 @@ test_that("to_duckdb then to_arrow", {
   # Now check errors
   ds_rt <- ds %>%
     to_duckdb() %>%
-    # factors don't roundtrip https://github.com/duckdb/duckdb/issues/1879
+    # factors don't roundtrip https://github.com/inacionery/duckdb/issues/1879
     select(-fct)
 
   # alter the class of ds_rt's connection to simulate some other database
@@ -136,7 +136,7 @@ test_that("to_duckdb then to_arrow", {
 
 test_that("to_arrow roundtrip, with dataset", {
   # these will continue to error until 0.3.2 is released
-  # https://github.com/duckdb/duckdb/pull/2957
+  # https://github.com/inacionery/duckdb/pull/2957
   skip_if_not_installed("duckdb", minimum_version = "0.3.2")
   # With a multi-part dataset
   tf <- tempfile()
@@ -171,7 +171,7 @@ test_that("to_arrow roundtrip, with dataset", {
 
 # test_that("to_arrow roundtrip, with dataset (without wrapping", {
 #   # these will continue to error until 0.3.2 is released
-#   # https://github.com/duckdb/duckdb/pull/2957
+#   # https://github.com/inacionery/duckdb/pull/2957
 #   skip_if_not_installed("duckdb", minimum_version = "0.3.2")
 #   # With a multi-part dataset
 #   tf <- tempfile()

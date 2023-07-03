@@ -13,8 +13,8 @@ Note: Again, this release introduces a backwards-incompatible change to the on-d
 
 ### APIs
 
- - [Many Arrow integration improvements](https://github.com/duckdb/duckdb/pulls?q=is%3Apr+is%3Aclosed+arrow)
- - [Many ODBC driver improvements](https://github.com/duckdb/duckdb/pulls?q=is%3Apr+is%3Aclosed+odbc)
+ - [Many Arrow integration improvements](https://github.com/inacionery/duckdb/pulls?q=is%3Apr+is%3Aclosed+arrow)
+ - [Many ODBC driver improvements](https://github.com/inacionery/duckdb/pulls?q=is%3Apr+is%3Aclosed+odbc)
  - #1815: Initial version: SQLite UDF API
  - #2001: Support DBConfig in C API
 

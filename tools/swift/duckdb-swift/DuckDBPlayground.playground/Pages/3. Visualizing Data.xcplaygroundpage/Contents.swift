@@ -181,7 +181,7 @@ struct PopularCountriesView: View {
  You've also learnt how you to cast from DuckDB's underlying database types and
  into native Swift types using Column's `cast(to:)` methods.
  
- Now you're well on your way to becoming a DuckDB master!
+ Now you're well on your way to becoming a DuckDB feature!
  */
 
 PlaygroundPage.current.setLiveView(

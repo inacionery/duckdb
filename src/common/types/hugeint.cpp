@@ -93,7 +93,7 @@ hugeint_t PositiveHugeintLeftShift(hugeint_t lhs, uint32_t amount) {
 hugeint_t Hugeint::DivModPositive(hugeint_t lhs, uint64_t rhs, uint64_t &remainder) {
 	D_ASSERT(lhs.upper >= 0);
 	// DivMod code adapted from:
-	// https://github.com/calccrypto/uint128_t/blob/master/uint128_t.cpp
+	// https://github.com/calccrypto/uint128_t/blob/feature/uint128_t.cpp
 
 	// initialize the result and remainder to 0
 	hugeint_t div_result;
@@ -173,7 +173,7 @@ bool Hugeint::TryMultiply(hugeint_t lhs, hugeint_t rhs, hugeint_t &result) {
 	result.lower = uint64_t(result_i128 & 0xffffffffffffffff);
 #else
 	// Multiply code adapted from:
-	// https://github.com/calccrypto/uint128_t/blob/master/uint128_t.cpp
+	// https://github.com/calccrypto/uint128_t/blob/feature/uint128_t.cpp
 
 	// split values into 4 32-bit parts
 	uint64_t top[4] = {uint64_t(lhs.upper) >> 32, uint64_t(lhs.upper) & 0xffffffff, lhs.lower >> 32,
@@ -269,7 +269,7 @@ hugeint_t Hugeint::DivMod(hugeint_t lhs, hugeint_t rhs, hugeint_t &remainder) {
 		Hugeint::NegateInPlace(rhs);
 	}
 	// DivMod code adapted from:
-	// https://github.com/calccrypto/uint128_t/blob/master/uint128_t.cpp
+	// https://github.com/calccrypto/uint128_t/blob/feature/uint128_t.cpp
 
 	// initialize the result and remainder to 0
 	hugeint_t div_result;

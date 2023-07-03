@@ -3,7 +3,7 @@
 
 require skip_reload
 
-# FIXME: https://github.com/duckdb/duckdb/issues/7755
+# FIXME: https://github.com/inacionery/duckdb/issues/7755
 require vector_size 2048
 
 # Test invalid arguments

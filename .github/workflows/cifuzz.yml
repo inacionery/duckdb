@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!feature'
       - '!feature'
     tags:
       - '**'
@@ -18,13 +18,13 @@ on:
       - '.github/config/uncovered_files.csv'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/feature' || github.sha }}
   cancel-in-progress: true
 
 jobs:
   Fuzzing:
     name: OSSFuzz
-    if: github.repository == 'duckdb/duckdb'
+    if: github.repository == 'inacionery/duckdb'
     strategy:
       fail-fast: false
       matrix:
@@ -33,13 +33,13 @@ jobs:
     steps:
     - name: Build Fuzzers ${{ matrix.sanitizer }}
       id: build
-      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
+      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@feature
       with:
         oss-fuzz-project-name: 'duckdb'
         dry-run: false
         sanitizer: ${{ matrix.sanitizer }}
     - name: Run Fuzzers ${{ matrix.sanitizer }}
-      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
+      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@feature
       with:
         oss-fuzz-project-name: 'duckdb'
         fuzz-seconds: 3600

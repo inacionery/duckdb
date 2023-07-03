@@ -2,7 +2,7 @@
 #### Clone the repo and compile the benchmark runner
 
 ```
-git clone https://github.com/duckdb/duckdb
+git clone https://github.com/inacionery/duckdb
 cd duckdb
 BUILD_BENCHMARK=1 BUILD_TPCH=1 make
 ```

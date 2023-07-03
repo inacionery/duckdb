@@ -5,22 +5,22 @@ import glob
 import time
 import urllib.request
 
-api_url = 'https://api.github.com/repos/duckdb/duckdb/'
+api_url = 'https://api.github.com/repos/inacionery/duckdb/'
 
 if (len(sys.argv) < 2):
 	print("Usage: [filename1] [filename2] ... ")
 	exit(1)
 
-# this essentially should run on release tag builds to fill up release assets and master
+# this essentially should run on release tag builds to fill up release assets and feature
 
 repo = os.getenv("GITHUB_REPOSITORY", "")
-if repo != "duckdb/duckdb":
+if repo != "inacionery/duckdb":
 	print("Not running on forks. Exiting.")
 	exit(0)
 
 ref = os.getenv("GITHUB_REF", '') # this env var is always present just not always used
-if ref == 'refs/heads/master':
-	print("Not running on master. Exiting.")
+if ref == 'refs/heads/feature':
+	print("Not running on feature. Exiting.")
 	exit(0)
 elif ref.startswith('refs/tags/'):
 	tag = ref.replace('refs/tags/', '')

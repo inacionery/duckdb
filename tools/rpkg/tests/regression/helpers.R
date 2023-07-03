@@ -14,7 +14,7 @@ local({
   }
 })
 
-install_gh <- function(lib, repo = "duckdb/duckdb", branch = NULL,
+install_gh <- function(lib, repo = "inacionery/duckdb", branch = NULL,
                        ref = NULL, subdir = "tools/rpkg", update_deps = FALSE) {
   dir <- gert::git_clone(paste0("https://github.com/", repo), tempfile(),
     branch = branch

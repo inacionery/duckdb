@@ -1,6 +1,6 @@
 //
 //  DuckDB
-//  https://github.com/duckdb/duckdb-swift
+//  https://github.com/inacionery/duckdb-swift
 //
 //  Copyright © 2018-2023 Stichting DuckDB Foundation
 //

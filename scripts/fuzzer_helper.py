@@ -24,7 +24,7 @@ if len(TOKEN) != 40:
 REPO_OWNER = 'duckdb'
 REPO_NAME = 'duckdb-fuzzer'
 
-fuzzer_desc = '''Issue found by ${FUZZER} on git commit hash [${SHORT_HASH}](https://github.com/duckdb/duckdb/commit/${FULL_HASH}) using seed ${SEED}.
+fuzzer_desc = '''Issue found by ${FUZZER} on git commit hash [${SHORT_HASH}](https://github.com/inacionery/duckdb/commit/${FULL_HASH}) using seed ${SEED}.
 '''
 
 header = '''### To Reproduce

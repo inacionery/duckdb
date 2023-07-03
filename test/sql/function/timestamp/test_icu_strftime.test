@@ -268,7 +268,7 @@ statement error
 SELECT ts, strftime(ts, '%C') FROM timestamps;
 
 #
-# Tests for fix of nr3 in list of https://github.com/duckdb/duckdb/issues/5984
+# Tests for fix of nr3 in list of https://github.com/inacionery/duckdb/issues/5984
 #
 statement ok
 PRAGMA TIMEZONE='Asia/Baghdad';

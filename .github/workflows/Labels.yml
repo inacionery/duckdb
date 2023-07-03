@@ -15,12 +15,12 @@ jobs:
     steps:
       - name: Label Issue Gold Foundation Member
         if: ${{ contains(fromJson(env.GOLD_FOUNDATION_MEMBERS), github.event.issue.user.login) }}
-        uses: andymckay/labeler@master
+        uses: andymckay/labeler@feature
         with:
           add-labels: "Gold Foundation Member"
 
       - name: Label Issue Silver Foundation Member
         if: ${{ contains(fromJson(env.SILVER_FOUNDATION_MEMBERS), github.event.issue.user.login) }}
-        uses: andymckay/labeler@master
+        uses: andymckay/labeler@feature
         with:
           add-labels: "Silver Foundation Member"

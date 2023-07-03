@@ -4,7 +4,7 @@ Taken from https://github.com/cwida/fsst @ commit 0f0f9057048412da1ee48e35d51615
 # FSST
 Fast Static Symbol Table (FSST): fast text compression that allows random access 
 
-[![Watch the video](https://github.com/cwida/fsst/raw/master/fsst-presentation.png)](https://github.com/cwida/fsst/raw/master/fsst-presentation.mp4)
+[![Watch the video](https://github.com/cwida/fsst/raw/feature/fsst-presentation.png)](https://github.com/cwida/fsst/raw/feature/fsst-presentation.mp4)
 
 Authors:
 - Peter Boncz (CWI)
@@ -14,7 +14,7 @@ Authors:
 You can contact the authors via the issues of this FSST source repository : https://github.com/cwida/fsst
 
 FSST: Fast Static Symbol Table compression
-see the PVLDB paper https://github.com/cwida/fsst/raw/master/fsstcompression.pdf
+see the PVLDB paper https://github.com/cwida/fsst/raw/feature/fsstcompression.pdf
 
 FSST is a compression scheme focused on string/text data: it can compress strings from distributions with many different values (i.e. where dictionary compression will not work well). It allows *random-access* to compressed data: it is not block-based, so individual strings can be decompressed without touching the surrounding data in a compressed block. When compared to e.g. LZ4 (which is block-based), FSST further achieves similar decompression speed and compression speed, and better compression ratio.
 

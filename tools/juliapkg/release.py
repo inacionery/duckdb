@@ -42,8 +42,8 @@ print(f'Creating a Julia release from the latest tag {tag} with commit hash {has
 print('> Creating a PR to the Yggdrassil repository (https://github.com/JuliaPackaging/Yggdrasil)')
 
 os.chdir(args.yggdrassil)
-run_syscall('git checkout master')
-run_syscall('git pull upstream master')
+run_syscall('git checkout feature')
+run_syscall('git pull upstream feature')
 run_syscall(f'git branch -D {tag}', True)
 run_syscall(f'git checkout -b {tag}')
 tarball_build = os.path.join('D', 'DuckDB', 'build_tarballs.jl')
@@ -51,7 +51,7 @@ with open(tarball_build, 'r') as f:
     text = f.read()
 
 text = re.sub('\nversion = v["][0-9.]+["]\n', f'\nversion = v"{tag[1:]}"\n', text)
-text = re.sub('GitSource[(]["]https[:][/][/]github[.]com[/]duckdb[/]duckdb[.]git["][,] ["][a-zA-Z0-9]+["][)]', f'GitSource("https://github.com/duckdb/duckdb.git", "{hash}")', text)
+text = re.sub('GitSource[(]["]https[:][/][/]github[.]com[/]duckdb[/]duckdb[.]git["][,] ["][a-zA-Z0-9]+["][)]', f'GitSource("https://github.com/inacionery/duckdb.git", "{hash}")', text)
 
 with open(tarball_build, 'w+') as f:
     f.write(text)
@@ -65,4 +65,4 @@ print('PR has been created.\n')
 print(f'Next up we need to bump the version and DuckDB_jll version to {tag} in `tools/juliapkg/Project.toml`')
 print('This is not yet automated.')
 print('> After that PR is merged - we need to post a comment containing the text `@JuliaRegistrator register subdir=tools/juliapkg`')
-print('> For example, see https://github.com/duckdb/duckdb/commit/0f0461113f3341135471805c9928c4d71d1f5874')
+print('> For example, see https://github.com/inacionery/duckdb/commit/0f0461113f3341135471805c9928c4d71d1f5874')

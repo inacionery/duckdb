@@ -142,7 +142,7 @@ printf("%s\n", (calendar->inDaylightTime(success))?"Yes":"No");
 ```
 
 ### Reducing Data Size
-The inlined data is present in `data/icudt66l.dat`. It is compiled from the ICU library as described [here](https://github.com/unicode-org/icu/blob/master/docs/userguide/icu_data/buildtool.md), with the following filters set:
+The inlined data is present in `data/icudt66l.dat`. It is compiled from the ICU library as described [here](https://github.com/unicode-org/icu/blob/feature/docs/userguide/icu_data/buildtool.md), with the following filters set:
 
 ```json
 filters.json

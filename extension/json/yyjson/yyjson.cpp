@@ -3,7 +3,7 @@
  * Copyright (C) 2019 Yaoyuan <ibireme@gmail.com>.
  *
  * Released under the MIT License:
- * https://github.com/ibireme/yyjson/blob/master/LICENSE
+ * https://github.com/ibireme/yyjson/blob/feature/LICENSE
  *============================================================================*/
 
 #include "yyjson.hpp"
@@ -6221,7 +6221,7 @@ static_inline u64 round_to_odd(u64 hi, u64 lo, u64 cp) {
  
  See also:
  Dragonbox: A New Floating-Point Binary-to-Decimal Conversion Algorithm, 2022.
- https://github.com/jk-jeon/dragonbox/blob/master/other_files/Dragonbox.pdf
+ https://github.com/jk-jeon/dragonbox/blob/feature/other_files/Dragonbox.pdf
  https://github.com/jk-jeon/dragonbox
  
  @param sig_raw The raw value of significand in IEEE 754 format.

@@ -39,7 +39,7 @@ jobs:
     - name: Checkout specific DuckDB version
       shell: bash
       run: |
-        git clone https://github.com/duckdb/duckdb.git duckdb-old
+        git clone https://github.com/inacionery/duckdb.git duckdb-old
         git -C duckdb-old checkout ${{ inputs.duckdb_ref }}
 
     - name: Override config (CMake)
@@ -81,7 +81,7 @@ jobs:
       - name: Checkout specific DuckDB version
         shell: bash
         run: |
-          git clone https://github.com/duckdb/duckdb.git duckdb-old
+          git clone https://github.com/inacionery/duckdb.git duckdb-old
           git -C duckdb-old checkout ${{ inputs.duckdb_ref }}
 
       - name: Override extensions.csv
@@ -125,7 +125,7 @@ jobs:
      - name: Checkout specific DuckDB version
        shell: bash
        run: |
-         git clone https://github.com/duckdb/duckdb.git duckdb-old
+         git clone https://github.com/inacionery/duckdb.git duckdb-old
          git -C duckdb-old checkout ${{ inputs.duckdb_ref }}
 
      - name: Override extensions.csv
@@ -179,7 +179,7 @@ jobs:
     - name: Checkout specific DuckDB version
       shell: bash
       run: |
-        git clone https://github.com/duckdb/duckdb.git duckdb-old
+        git clone https://github.com/inacionery/duckdb.git duckdb-old
         git -C duckdb-old checkout ${{ inputs.duckdb_ref }}
 
     - name: Override extensions.csv

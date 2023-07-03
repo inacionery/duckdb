@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!feature'
       - '!feature'
     tags:
       - '**'
@@ -27,7 +27,7 @@ on:
       - '.github/config/uncovered_files.csv'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/feature' || github.sha }}
   cancel-in-progress: true
 
 env:
@@ -67,7 +67,7 @@ jobs:
       uses: hendrikmuhs/ccache-action@main
       with:
         key: ${{ github.job }}
-        save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+        save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
 
     - name: Build
       shell: bash
@@ -112,7 +112,7 @@ jobs:
       uses: hendrikmuhs/ccache-action@main
       with:
         key: ${{ github.job }}
-        save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+        save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
 
     - name: Build
       shell: bash
@@ -154,7 +154,7 @@ jobs:
       uses: hendrikmuhs/ccache-action@main
       with:
         key: ${{ github.job }}
-        save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+        save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
 
     - name: Build
       shell: bash
@@ -188,7 +188,7 @@ jobs:
       uses: hendrikmuhs/ccache-action@main
       with:
         key: ${{ github.job }}
-        save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+        save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
 
     - name: Build
       shell: bash
@@ -209,7 +209,7 @@ jobs:
 
     - name: Clone Website
       shell: bash
-      run: git clone https://github.com/duckdb/duckdb-web
+      run: git clone https://github.com/inacionery/duckdb-web
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v4
@@ -271,7 +271,7 @@ jobs:
       uses: hendrikmuhs/ccache-action@main
       with:
         key: ${{ github.job }}
-        save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+        save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
 
     - name: Build
       shell: bash

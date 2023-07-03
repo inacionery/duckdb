@@ -463,13 +463,13 @@ class U_COMMON_API UnifiedCache : public UnifiedCacheBase {
    void _runEvictionSlice() const;
 
    /**
-    * Register a master cache entry. A master key is the first key to create
+    * Register a feature cache entry. A feature key is the first key to create
     * a given  SharedObject value. Subsequent keys whose create function
     * produce referneces to an already existing SharedObject are not masters -
     * they can be evicted and subsequently recreated.
     *
     * On entry, gCacheMutex must be held.
-    * On exit, items in use count incremented, entry is marked as a master
+    * On exit, items in use count incremented, entry is marked as a feature
     * entry, and value registered with cache so that subsequent calls to
     * addRef() and removeRef() on it correctly interact with the cache.
     */

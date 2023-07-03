@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!feature'
       - '!feature'
     tags:
       - '**'
@@ -16,13 +16,13 @@ on:
       - '.github/config/uncovered_files.csv'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/feature' || github.sha }}
   cancel-in-progress: true
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
   DUCKDB_WASM_VERSION: 7bf2a73
-  CCACHE_SAVE: ${{ github.repository != 'duckdb/duckdb' }}
+  CCACHE_SAVE: ${{ github.repository != 'inacionery/duckdb' }}
 
 jobs:
   linux-memory-leaks:
@@ -666,7 +666,7 @@ jobs:
     - name: Setup
       shell: bash
       run: |
-        git clone --recurse-submodules https://github.com/duckdb/duckdb-wasm
+        git clone --recurse-submodules https://github.com/inacionery/duckdb-wasm
         cd duckdb-wasm
         git checkout ${{ env.DUCKDB_WASM_VERSION }}
         shopt -s nullglob

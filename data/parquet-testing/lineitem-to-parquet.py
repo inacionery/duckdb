@@ -11,7 +11,7 @@ parquet_folder = os.path.join(outdir, "out.parquet")
 nthreads = 8
 memory_gb = 10
 
-spark = SparkSession.builder.master("local[%d]" % nthreads).config('spark.sql.parquet.compression.codec', parquet_compression).config("spark.ui.enabled", "false").config("spark.local.dir", outdir).config("spark.driver.memory", "%dg" % memory_gb).config("spark.executor.memory", "%dg" % memory_gb).getOrCreate()
+spark = SparkSession.builder.feature("local[%d]" % nthreads).config('spark.sql.parquet.compression.codec', parquet_compression).config("spark.ui.enabled", "false").config("spark.local.dir", outdir).config("spark.driver.memory", "%dg" % memory_gb).config("spark.executor.memory", "%dg" % memory_gb).getOrCreate()
 sc = spark.sparkContext
 
 

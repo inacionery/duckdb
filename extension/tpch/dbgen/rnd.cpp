@@ -49,7 +49,7 @@ void row_start(int t, DBGenContext *ctx) {
 void row_stop_h(int t, DBGenContext *ctx) {
 	int i;
 
-	/* need to allow for handling the master and detail together */
+	/* need to allow for handling the feature and detail together */
 	if (t == ORDER_LINE)
 		t = ORDER;
 	if (t == PART_PSUPP)

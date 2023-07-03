@@ -3,7 +3,7 @@
  * Copyright (C) 2019 Yaoyuan <ibireme@gmail.com>.
  *
  * Released under the MIT License:
- * https://github.com/ibireme/yyjson/blob/master/LICENSE
+ * https://github.com/ibireme/yyjson/blob/feature/LICENSE
  *============================================================================*/
 
 /** @file yyjson.h */

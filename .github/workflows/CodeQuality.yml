@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
+      - '!feature'
       - '!feature'
     tags:
       - '**'
@@ -24,7 +24,7 @@ on:
       - '!.github/workflows/CodeQuality.yml'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/feature' || github.sha }}
   cancel-in-progress: true
 
 env:
@@ -81,7 +81,7 @@ jobs:
         uses: hendrikmuhs/ccache-action@main
         with:
           key: ${{ github.job }}
-          save: ${{ github.ref == 'refs/heads/master' || github.repository != 'duckdb/duckdb' }}
+          save: ${{ github.ref == 'refs/heads/feature' || github.repository != 'inacionery/duckdb' }}
       - name: Download clang-tidy-cache
         shell: bash
         run: |

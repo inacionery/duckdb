@@ -14,7 +14,7 @@ coverage:
     patch:
       default:
         branches:
-          - master
+          - feature
         if_not_found: success
         if_ci_failed: error
         informational: true

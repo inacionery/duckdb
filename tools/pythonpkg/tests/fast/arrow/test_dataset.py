@@ -86,7 +86,7 @@ class TestArrowDataset(object):
 
 
 class CustomDataset(pyarrow.dataset.Dataset):
-    # For testing duck-typing of dataset/scanner https://github.com/duckdb/duckdb/pull/5998
+    # For testing duck-typing of dataset/scanner https://github.com/inacionery/duckdb/pull/5998
     SCHEMA = pyarrow.schema([pyarrow.field("a", pyarrow.int64(), True),
                              pyarrow.field("b", pyarrow.float64(), True)])
     DATA = pyarrow.Table.from_arrays([pyarrow.array(range(100)),

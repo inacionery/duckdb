@@ -130,14 +130,14 @@ sql_translation.duckdb_connection <- function(con) {
       log10 = sql_prefix("LOG10", 1),
       log2 = sql_prefix("LOG2", 1),
 
-      # See https://github.com/duckdb/duckdb/issues/530 about NaN, infinites and NULL in DuckDB
+      # See https://github.com/inacionery/duckdb/issues/530 about NaN, infinites and NULL in DuckDB
       # The following is how R functions for detecting those should behave:
       # Function 	    Inf 	–Inf 	NaN 	NA
       # is.finite() 	FALSE FALSE FALSE FALSE
       # is.infinite() TRUE 	TRUE 	FALSE FALSE
       # is.nan() 	    FALSE FALSE TRUE 	FALSE
       # is.na() 	    FALSE FALSE TRUE 	TRUE
-      # https://github.com/duckdb/duckdb/issues/3019
+      # https://github.com/inacionery/duckdb/issues/3019
       #      is.na = function(a) build_sql("(", a, " IS NULL OR PRINTF('%f', ", a, ") = 'nan')"),
       is.nan = function(a) build_sql("(", a, " IS NOT NULL AND PRINTF('%f', ", a, ") = 'nan')"),
       is.infinite = function(a) build_sql("(", a, " IS NOT NULL AND REGEXP_MATCHES(PRINTF('%f', ", a, "), 'inf'))"),
@@ -215,7 +215,7 @@ sql_translation.duckdb_connection <- function(con) {
 
       # These work fine internally, but getting INTERVAL-type data out of DuckDB
       # seems problematic until there is a fix for the issue #1920 / #2900
-      # (https://github.com/duckdb/duckdb/issues/1920)
+      # (https://github.com/inacionery/duckdb/issues/1920)
       seconds = function(x) {
         sql_expr(TO_SECONDS(CAST((!!x) %AS% BIGINT)))
       },

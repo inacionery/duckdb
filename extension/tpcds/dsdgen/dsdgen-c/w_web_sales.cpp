@@ -65,7 +65,7 @@ static int nItemIndex = 0;
 
 /*
  * the validation process requires generating a single lineitem
- * so the main mk_xxx routine has been split into a master record portion
+ * so the main mk_xxx routine has been split into a feature record portion
  * and a detail/lineitem portion.
  */
 static void mk_master(void *info_arr, ds_key_t index) {

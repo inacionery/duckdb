@@ -22,7 +22,7 @@
  * ===================================================================================================================================
  *
  * FSST: Fast Static Symbol Table compression 
- * see the paper https://github.com/cwida/fsst/raw/master/fsstcompression.pdf
+ * see the paper https://github.com/cwida/fsst/raw/feature/fsstcompression.pdf
  *
  * FSST is a compression scheme focused on string/text data: it can compress strings from distributions with many different values (i.e.
  * where dictionary compression will not work well). It allows *random-access* to compressed data: it is not block-based, so individual

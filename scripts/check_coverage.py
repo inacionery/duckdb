@@ -19,7 +19,7 @@ if not os.path.exists(args.directory):
 covered_regex = '<a name="(\d+)">[ \t\n]*<span class="lineNum">[ \t\n0-9]+</span><span class="{COVERED_CLASS}">[ \t\n0-9]+:([^<]+)'
 
 def get_original_path(path):
-    return path.replace('.gcov.html', '').replace(os.getcwd(), '').replace('coverage_html' + os.path.sep, '').replace('home/runner/work/duckdb/duckdb/', '')
+    return path.replace('.gcov.html', '').replace(os.getcwd(), '').replace('coverage_html' + os.path.sep, '').replace('home/runner/work/inacionery/duckdb/', '')
 
 def cleanup_line(line):
     return line.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"')

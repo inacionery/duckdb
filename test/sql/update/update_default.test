@@ -1,5 +1,5 @@
 # name: test/sql/update/update_default.test
-# description: Test for 40th item of fuzzer issues from https://github.com/duckdb/duckdb/issues/5984
+# description: Test for 40th item of fuzzer issues from https://github.com/inacionery/duckdb/issues/5984
 # group: [update]
 
 statement ok

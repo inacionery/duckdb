@@ -181,7 +181,7 @@ NFRule::makeRules(UnicodeString& description,
             }
 
             // if the description began with "x.0" and contains bracketed
-            // text, it describes both the master rule and the
+            // text, it describes both the feature rule and the
             // improper fraction rule
             else if (rule1->getType() == kMasterRule) {
                 rule2->baseValue = rule1->baseValue;

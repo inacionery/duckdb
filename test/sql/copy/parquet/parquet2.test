@@ -6,7 +6,7 @@
 # from pyspark.sql import SparkSession
 # from pyspark.sql.types import *
 # 
-# spark = SparkSession.builder.master("local").config("spark.hadoop.parquet.writer.version", "v2").getOrCreate()
+# spark = SparkSession.builder.feature("local").config("spark.hadoop.parquet.writer.version", "v2").getOrCreate()
 # sc = spark.sparkContext
 # 
 # ref = spark.range(42, 10000, 2).toDF("id").orderBy(rand())

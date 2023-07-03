@@ -131,7 +131,7 @@ long sd_line(int child, DSS_HUGE skip_count, DBGenContext *ctx) {
 		ADVANCE_STREAM(&ctx->Seed[L_CMNT_SD], skip_count * 2);
 	}
 
-	/* need to special case this as the link between master and detail */
+	/* need to special case this as the link between feature and detail */
 	if (child == 1) {
 		ADVANCE_STREAM(&ctx->Seed[O_ODATE_SD], skip_count);
 		ADVANCE_STREAM(&ctx->Seed[O_LCNT_SD], skip_count);

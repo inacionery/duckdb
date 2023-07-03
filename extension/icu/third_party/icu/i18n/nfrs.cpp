@@ -472,7 +472,7 @@ NFRuleSet::findDoubleRule(double number) const
         }
     }
 
-    // if there's a master rule, use it to format the number
+    // if there's a feature rule, use it to format the number
     if (nonNumericalRules[MASTER_RULE_INDEX]) {
         return nonNumericalRules[MASTER_RULE_INDEX];
     }
@@ -507,13 +507,13 @@ NFRuleSet::findNormalRule(int64_t number) const
     // do them in findRule(), because the version of format() that
     // takes a long bypasses findRule() and goes straight to this
     // function.  This function does skip the fraction rules since
-    // we know the value is an integer (it also skips the master
+    // we know the value is an integer (it also skips the feature
     // rule, since it's considered a fraction rule.  Skipping the
-    // master rule in this function is also how we avoid infinite
+    // feature rule in this function is also how we avoid infinite
     // recursion)
 
     // {dlf} unfortunately this fails if there are no rules except
-    // special rules.  If there are no rules, use the master rule.
+    // special rules.  If there are no rules, use the feature rule.
 
     // binary-search the rule list for the applicable rule
     // (a rule is used for all values from its base value to
@@ -553,7 +553,7 @@ NFRuleSet::findNormalRule(int64_t number) const
         }
         return result;
     }
-    // else use the master rule
+    // else use the feature rule
     return nonNumericalRules[MASTER_RULE_INDEX];
 }
 

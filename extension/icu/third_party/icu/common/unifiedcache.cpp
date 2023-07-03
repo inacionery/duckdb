@@ -338,7 +338,7 @@ void UnifiedCache::_putIfAbsentAndGet(
     } else {
         _put(element, value, status);
     }
-    // Run an eviction slice. This will run even if we added a master entry
+    // Run an eviction slice. This will run even if we added a feature entry
     // which doesn't increase the unused count, but that is still o.k
     _runEvictionSlice();
 }
@@ -474,7 +474,7 @@ UBool UnifiedCache::_isEvictable(const UHashElement *element) const
         return FALSE;
     }
 
-    // We can evict entries that are either not a master or have just
+    // We can evict entries that are either not a feature or have just
     // one reference (The one reference being from the cache itself).
     return (!theKey->fIsMaster || (theValue->softRefCount == 1 && theValue->noHardReferences()));
 }

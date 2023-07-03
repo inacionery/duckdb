@@ -17,5 +17,5 @@ CREATE TABLE temperatures (
 );
 
 run
-INSERT INTO temperatures SELECT temp FROM 'https://github.com/duckdb/duckdb-data/releases/download/v1.0/city_temperature.parquet' t(temp), range(28);
+INSERT INTO temperatures SELECT temp FROM 'https://github.com/inacionery/duckdb-data/releases/download/v1.0/city_temperature.parquet' t(temp), range(28);
 checkpoint;

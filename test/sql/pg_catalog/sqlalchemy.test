@@ -2,7 +2,7 @@
 # description: Test postgres catalog queries from SQL Alchemy to test postgres compatibility on this frnot
 # group: [pg_catalog]
 
-# https://github.com/sqlalchemy/sqlalchemy/blob/master/lib/sqlalchemy/dialects/postgresql/base.py
+# https://github.com/sqlalchemy/sqlalchemy/blob/feature/lib/sqlalchemy/dialects/postgresql/base.py
 
 statement ok
 CREATE TYPE greeting AS ENUM('hi', 'bonjour', 'konnichiwa', 'howdy')
