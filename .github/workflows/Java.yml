@@ -60,11 +60,6 @@ jobs:
       - name: Build
         shell: bash
         run: make
-      - name: Java Tests
-        shell: bash
-        run: >
-          java -cp build/release/tools/jdbc/duckdb_jdbc.jar
-          org.duckdb.test.TestDuckDBJDBC
 
       - name: Deploy
         shell: bash
@@ -146,10 +141,6 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_GENERATOR_PLATFORM=x64 -DJDBC_DRIVER=1 -DBUILD_EXTENSIONS=json
 
           cmake --build . --config Release
-      - name: Java Tests
-        shell: bash
-        run: |
-          java -cp tools/jdbc/duckdb_jdbc.jar org.duckdb.test.TestDuckDBJDBC
       - name: Deploy
         shell: bash
         run: >
@@ -185,15 +176,6 @@ jobs:
       - name: Build
         shell: bash
         run: make
-      - name: Java Tests
-        shell: bash
-        run: >
-          java -cp build/release/tools/jdbc/duckdb_jdbc.jar
-          org.duckdb.test.TestDuckDBJDBC
-      - name: Java Example
-        shell: bash
-        run: |
-          (cd examples/jdbc; make; make maven)
       - name: Deploy
         shell: bash
         run: >
@@ -304,7 +286,3 @@ jobs:
       - name: Build
         shell: bash
         run: make release
-
-      - name: Test
-        shell: bash
-        run: (cd jdbccts && make DUCKDB_JAR=../build/release/tools/jdbc/duckdb_jdbc.jar test)

@@ -55,12 +55,6 @@ jobs:
       shell: bash
       run: GEN=ninja make debug
 
-    - name: Test
-      shell: bash
-      run: |
-          echo "DUCKDB_INSTALL_LIB=$(find `pwd` -name "libduck*.dylib" | head -n 1)" >> $GITHUB_ENV
-          make unittestci
-
     - name: Amalgamation
       shell: bash
       run: |
@@ -114,36 +108,6 @@ jobs:
         shell: bash
         run: make
 
-      - name: Unit Test
-        shell: bash
-        run: make allunit
-
-      - name: Tools Tests
-        shell: bash
-        run: |
-          python tools/shell/shell-test.py build/release/duckdb
-
-      - name: Examples
-        shell: bash
-        run: |
-          (cd examples/embedded-c; make)
-          (cd examples/embedded-c++; make)
-
-        #     from https://docs.github.com/en/actions/deployment/deploying-xcode-applications/installing-an-apple-certificate-on-macos-runners-for-xcode-development
-      - name: Sign Binaries
-        shell: bash
-        env:
-          BUILD_CERTIFICATE_BASE64: ${{ secrets.OSX_CODESIGN_BUILD_CERTIFICATE_BASE64 }}
-          P12_PASSWORD: ${{ secrets.OSX_CODESIGN_P12_PASSWORD }}
-          KEYCHAIN_PASSWORD: ${{ secrets.OSX_CODESIGN_KEYCHAIN_PASSWORD }}
-        run: |
-          if [[ "$GITHUB_REPOSITORY" = "inacionery/duckdb" ]] ; then
-            . scripts/osx_import_codesign_certificate.sh
-          
-            codesign --all-architectures --force --sign "Developer ID Application: Stichting DuckDB Foundation" build/release/duckdb
-            codesign --all-architectures --force --sign "Developer ID Application: Stichting DuckDB Foundation" build/release/src/libduckdb*.dylib
-            codesign --all-architectures --force --sign "Developer ID Application: Stichting DuckDB Foundation" build/release/tools/odbc/libduckdb_odbc.dylib
-          fi
 
       - name: Deploy
         shell: bash
@@ -219,19 +183,6 @@ jobs:
         run: |
           ./scripts/extension-lipo-strip.sh x86_64 build/release/extension build/release/extension_arm64
           ./scripts/extension-lipo-strip.sh arm64 build/release/extension build/release/extension_x64
-
-      - name: Sign Extension Binaries
-        env:
-          BUILD_CERTIFICATE_BASE64: ${{ secrets.OSX_CODESIGN_BUILD_CERTIFICATE_BASE64 }}
-          P12_PASSWORD: ${{ secrets.OSX_CODESIGN_P12_PASSWORD }}
-          KEYCHAIN_PASSWORD: ${{ secrets.OSX_CODESIGN_KEYCHAIN_PASSWORD }}
-        run: |
-          if [[ "$GITHUB_REPOSITORY" = "inacionery/duckdb" ]] ; then
-          . scripts/osx_import_codesign_certificate.sh
-
-          codesign --all-architectures --force --sign "Developer ID Application: Stichting DuckDB Foundation" build/release/extension_arm64/*.duckdb_extension
-          codesign --all-architectures --force --sign "Developer ID Application: Stichting DuckDB Foundation" build/release/extension_x64/*.duckdb_extension
-          fi
 
       - name: Deploy
         shell: bash

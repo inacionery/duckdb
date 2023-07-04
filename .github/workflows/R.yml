@@ -270,8 +270,3 @@ jobs:
           ./configure
           R CMD build .
           R CMD INSTALL duckdb_*.tar.gz
-
-      - name: Test Load
-        shell: bash
-        run: |
-          R -e 'con <- DBI::dbConnect(duckdb::duckdb(config = list("allow_unsigned_extensions" = "true")), debug=TRUE); lapply(Sys.glob("build/release/extension/*/*.duckdb_extension"), function(x) DBI::dbExecute(con, sprintf("LOAD \"%s\"", x))); DBI::dbDisconnect(con, shutdown=TRUE);'

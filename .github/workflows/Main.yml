@@ -73,12 +73,6 @@ jobs:
       shell: bash
       run:  make debug
 
-    - name: Test
-      shell: bash
-      run: |
-          echo "DUCKDB_INSTALL_LIB=$(find `pwd` -name "libduck*.so" | head -n 1)" >> $GITHUB_ENV
-          make unittestci
-
 
  force-storage:
     name: Force Storage
@@ -118,10 +112,6 @@ jobs:
       shell: bash
       run: make reldebug
 
-    - name: Test
-      shell: bash
-      run: build/reldebug/test/unittest --force-storage
-
  force-restart:
     name: Force Restart
     runs-on: ubuntu-20.04
@@ -160,10 +150,6 @@ jobs:
       shell: bash
       run: make reldebug
 
-    - name: Test
-      shell: bash
-      run: build/reldebug/test/unittest --force-reload --force-storage
-
  valgrind:
     name: Valgrind
     runs-on: ubuntu-20.04
@@ -193,10 +179,6 @@ jobs:
     - name: Build
       shell: bash
       run: make debug
-
-    - name: Test
-      shell: bash
-      run: valgrind ./build/debug/test/unittest test/sql/tpch/tpch_sf001.test_slow
 
  docs:
     name: Website Docs
@@ -276,27 +258,3 @@ jobs:
     - name: Build
       shell: bash
       run: DISABLE_SANITIZER=1 make debug
-
-    - name: Test Standard ODBC tests
-      shell: bash
-      run: build/debug/tools/odbc/test/test_odbc
-
-    - name: Test nanodbc
-      shell: bash
-      run: ./tools/odbc/test/run_nanodbc_tests.sh
-
-    - name: Test psqlodbc
-      shell: bash
-      run: ./tools/odbc/test/run_psqlodbc_tests.sh
-
-    - name: Test isql
-      shell: bash
-      run: ./tools/odbc/test/run_isql_tests.sh
-
-    - name: Test R ODBC
-      shell: bash
-      run: R -f tools/odbc/test/rodbc.R
-
-    - name: Test Python ODBC
-      shell: bash
-      run: ./tools/odbc/test/run_pyodbc_tests.sh

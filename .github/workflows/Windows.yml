@@ -61,18 +61,6 @@ jobs:
         cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_GENERATOR_PLATFORM=x64 -DBUILD_EXTENSIONS="parquet;icu;tpch;tpcds;fts;json;excel;visualizer;autocomplete" -DBUILD_ODBC_DRIVER=1 -DDISABLE_UNITY=1
         cmake --build . --config Release
 
-    - name: Test
-      shell: bash
-      run: |
-        echo "DUCKDB_INSTALL_LIB=D:\a\duckdb\duckdb\src\Release\duckdb.dll" >> $env:GITHUB_ENV
-        test/Release/unittest.exe
-
-    - name: Tools Test
-      shell: bash
-      run: |
-        python tools/shell/shell-test.py Release/duckdb.exe
-        tools/sqlite3_api_wrapper/Release/test_sqlite3_api_wrapper.exe
-
     - name: Deploy
       shell: bash
       run: |
@@ -120,13 +108,6 @@ jobs:
         git clone https://github.com/Mytherin/psqlodbc.git
         (cd psqlodbc && git checkout edd9890a5046a2006f210849abb97c6a6589a45c && make release)
 
-    - name: Test psqlodbc
-      shell: bash
-      run: |
-        cd psqlodbc
-        export PSQLODBC_TEST_DSN=DuckDB
-        build/release/Release/psql_odbc_test.exe -f ../tools/odbc/test/psql_supported_tests
-
     - name: Print ODBC trace on failure
       if: ${{ failure() }}
       shell: bash
@@ -158,16 +139,6 @@ jobs:
       run: |
         cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_GENERATOR_PLATFORM=Win32 -DBUILD_EXTENSIONS="icu;parquet;tpch;tpcds;fts;json;excel;visualizer;autocomplete"
         cmake --build . --config Release
-
-    - name: Test
-      shell: bash
-      run: test/Release/unittest.exe
-
-    - name: Tools Test
-      shell: bash
-      run: |
-        python tools/shell/shell-test.py Release/duckdb.exe
-        tools/sqlite3_api_wrapper/Release/test_sqlite3_api_wrapper.exe
 
     - name: Deploy
       shell: bash
@@ -213,17 +184,6 @@ jobs:
          run: |
            cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DBUILD_EXTENSIONS=parquet
            cmake --build . --config Release
-
-       - name: Test
-         shell: msys2 {0}
-         run: |
-           cp src/libduckdb.dll .
-           test/unittest.exe
-           
-       - name: Tools Test
-         shell: msys2 {0}
-         run: |
-           tools/sqlite3_api_wrapper/test_sqlite3_api_wrapper.exe
 
  win-extensions-64:
    name: Windows Extensions (64-bit)

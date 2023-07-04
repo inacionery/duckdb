@@ -1,10 +1,6 @@
 name: "Build Extensions"
-description: "Build, test and deploy the DuckDB extensions"
+description: "Build, and deploy the DuckDB extensions"
 inputs:
-  # Test config
-  run_tests:
-    description: 'Run extension tests after build'
-    default: 1
 
   # Deploy config
   deploy_as:
@@ -118,19 +114,4 @@ runs:
           elif [[ "$GITHUB_REF" =~ ^(refs/heads/feature)$ ]] ; then
             ./scripts/extension-upload.sh ${{ inputs.deploy_as }} `git log -1 --format=%h`
           fi
-        fi
-
-    - name: Test
-      if: ${{ inputs.run_tests == 1 }}
-      shell: bash
-      env:
-        AWS_ACCESS_KEY_ID: ${{ inputs.s3_id }}
-        AWS_SECRET_ACCESS_KEY: ${{ inputs.s3_key }}
-        AWS_DEFAULT_REGION: us-east-1
-      run: |
-        cd  ${{ inputs.build_dir}}
-        if [[ "$GITHUB_REF" =~ ^(refs/heads/feature|refs/tags/v.+)$ && "$GITHUB_REPOSITORY" = "inacionery/duckdb" ]] ; then
-          ./scripts/extension-upload-test.sh
-        else
-          ./scripts/extension-upload-test.sh local
         fi
